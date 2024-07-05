@@ -1,4 +1,6 @@
 import 'package:classified_app/views/dashboard/dashboard.dart';
+import 'package:classified_app/views/orders/orders.dart';
+import 'package:classified_app/views/store/store.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -63,7 +65,7 @@ class BottomBar extends StatelessWidget {
                   Icons.person,
                   color: Colors.white,
                 ),
-                label: 'Profile',
+                label: 'Store',
               ),
             ],
           ),
@@ -78,14 +80,8 @@ class NavigationController extends GetxController {
 
   final screens = [
     const DashboardScreen(),
-    Container(
-      color: Colors.green,
-    ),
-    Container(
-      color: Colors.blue,
-    ),
-    Container(
-      color: Colors.yellow,
-    ),
+    Container(color: Colors.green),
+    const OrdersScreen(),
+    const StoreScreen()
   ];
 }

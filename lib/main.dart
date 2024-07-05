@@ -1,4 +1,4 @@
-import 'package:classified_app/start.dart';
+import 'package:classified_app/views/dashboard/bottombar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
         useMaterial3: true,
       ),
-      home: const StartScreen(),
+      home: const BottomBar(),
     );
   }
 }

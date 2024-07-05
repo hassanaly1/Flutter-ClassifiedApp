@@ -1,11 +1,24 @@
 import 'package:classified_app/helpers/appcolors.dart';
 import 'package:classified_app/helpers/custom_text.dart';
 import 'package:classified_app/helpers/reusable_container.dart';
+import 'package:classified_app/views/dashboard/active_listing.dart';
+import 'package:classified_app/views/dashboard/create_ad.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_speed_dial/flutter_speed_dial.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class DashboardScreen extends StatelessWidget {
+class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});
+
+  @override
+  State<DashboardScreen> createState() => _DashboardScreenState();
+}
+
+class _DashboardScreenState extends State<DashboardScreen> {
+  ValueNotifier<bool> isDialOpen = ValueNotifier(false);
+  bool customDialRoot = true;
+  bool extend = false;
 
   @override
   Widget build(BuildContext context) {
@@ -27,16 +40,18 @@ class DashboardScreen extends StatelessWidget {
         ],
       ),
       drawer: const Drawer(),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(12.0),
-          child: Column(
-            children: [
-              const Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Expanded(
-                    child: ReUsableContainer(
+      body: Padding(
+        padding: const EdgeInsets.all(12.0),
+        child: Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Expanded(
+                  child: InkWell(
+                    onTap: () => Get.to(() => const ActiveListing(),
+                        transition: Transition.rightToLeft),
+                    child: const ReUsableContainer(
                       height: 150,
                       color: Colors.white,
                       padding: EdgeInsets.all(8.0),
@@ -65,110 +80,116 @@ class DashboardScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Expanded(
-                    child: ReUsableContainer(
-                      height: 150,
-                      color: Colors.white,
-                      padding: EdgeInsets.all(12.0),
-                      image: DecorationImage(
-                        alignment: Alignment.centerRight,
-                        image: AssetImage('assets/images/orders.png'),
-                      ),
-                      child: Padding(
-                        padding: EdgeInsets.all(8.0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            CustomTextWidget(
-                              text: 'Orders',
-                              fontSize: 12.0,
-                              fontWeight: FontWeight.bold,
-                            ),
-                            CustomTextWidget(
-                              text: '03',
-                              fontSize: 22.0,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ],
-                        ),
+                ),
+                const Expanded(
+                  child: ReUsableContainer(
+                    height: 150,
+                    color: Colors.white,
+                    padding: EdgeInsets.all(12.0),
+                    image: DecorationImage(
+                      alignment: Alignment.centerRight,
+                      image: AssetImage('assets/images/orders.png'),
+                    ),
+                    child: Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          CustomTextWidget(
+                            text: 'Orders',
+                            fontSize: 12.0,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          CustomTextWidget(
+                            text: '03',
+                            fontSize: 22.0,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ],
                       ),
                     ),
                   ),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Expanded(
-                    flex: 2,
-                    child: ReUsableContainer(
-                      height: 110,
-                      color: Colors.white,
+                ),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Expanded(
+                  flex: 2,
+                  child: ReUsableContainer(
+                    height: 110,
+                    color: Colors.white,
+                    padding: const EdgeInsets.all(8.0),
+                    child: Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            const Row(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          const Row(
+                            children: [
+                              CustomTextWidget(
+                                text: 'Subscriptions',
+                                fontSize: 14.0,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ],
+                          ),
+                          const Divider(),
+                          Text.rich(
+                            TextSpan(
                               children: [
-                                CustomTextWidget(
-                                  text: 'Subscriptions',
-                                  fontSize: 14.0,
-                                  fontWeight: FontWeight.bold,
+                                TextSpan(
+                                  text: 'Current Plan: ',
+                                  style: GoogleFonts.inter(
+                                    fontWeight: FontWeight.w300,
+                                    color: AppColors.blueTextColor,
+                                  ),
+                                ),
+                                TextSpan(
+                                  text: 'Plan Name',
+                                  style: GoogleFonts.inter(
+                                    fontWeight: FontWeight.bold,
+                                    color: AppColors.blueTextColor,
+                                  ),
                                 ),
                               ],
                             ),
-                            const Divider(),
-                            Text.rich(
-                              TextSpan(
-                                children: [
-                                  TextSpan(
-                                    text: 'Current Plan: ',
-                                    style: GoogleFonts.inter(
-                                      fontWeight: FontWeight.w300,
-                                      color: AppColors.blueTextColor,
-                                    ),
+                          ),
+                          Text.rich(
+                            TextSpan(
+                              children: [
+                                TextSpan(
+                                  text: 'Expiry Date: ',
+                                  style: GoogleFonts.inter(
+                                    fontWeight: FontWeight.w300,
+                                    color: AppColors.blueTextColor,
                                   ),
-                                  TextSpan(
-                                    text: 'Plan Name',
-                                    style: GoogleFonts.inter(
-                                      fontWeight: FontWeight.bold,
-                                      color: AppColors.blueTextColor,
-                                    ),
+                                ),
+                                TextSpan(
+                                  text: '22 Feb 2024',
+                                  style: GoogleFonts.inter(
+                                    fontWeight: FontWeight.bold,
+                                    color: AppColors.blueTextColor,
                                   ),
-                                ],
-                              ),
+                                ),
+                              ],
                             ),
-                            Text.rich(
-                              TextSpan(
-                                children: [
-                                  TextSpan(
-                                    text: 'Expiry Date: ',
-                                    style: GoogleFonts.inter(
-                                      fontWeight: FontWeight.w300,
-                                      color: AppColors.blueTextColor,
-                                    ),
-                                  ),
-                                  TextSpan(
-                                    text: '22 Feb 2024',
-                                    style: GoogleFonts.inter(
-                                      fontWeight: FontWeight.bold,
-                                      color: AppColors.blueTextColor,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
                     ),
                   ),
-                  Expanded(
-                    flex: 1,
+                ),
+                Expanded(
+                  flex: 1,
+                  child: InkWell(
+                    onTap: () => Get.to(
+                      () => const CreateAdScreen(),
+                      transition: Transition.rightToLeft,
+                    ),
                     child: ReUsableContainer(
                       height: 110,
                       color: Colors.white,
@@ -191,134 +212,158 @@ class DashboardScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Expanded(
-                    flex: 1,
-                    child: ReUsableContainer(
-                      color: Colors.white,
-                      padding: const EdgeInsets.all(8.0),
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: ListTile(
-                          visualDensity: VisualDensity.compact,
-                          contentPadding: EdgeInsets.zero,
-                          leading: Image.asset('assets/images/clicks.png'),
-                          title: CustomTextWidget(
-                            text: 'CLICKS',
-                            fontSize: 12.0,
-                            fontWeight: FontWeight.bold,
-                            textColor: AppColors.lightGreyColor,
-                          ),
-                          subtitle: const CustomTextWidget(
-                            text: '1000',
-                            fontSize: 22.0,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                    ),
+                ),
+              ],
+            ),
+            ReUsableContainer(
+              color: Colors.white,
+              padding: const EdgeInsets.all(8.0),
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: ListTile(
+                  visualDensity: VisualDensity.compact,
+                  contentPadding: EdgeInsets.zero,
+                  leading: Image.asset('assets/images/clicks.png'),
+                  title: CustomTextWidget(
+                    text: 'CLICKS',
+                    fontSize: 12.0,
+                    fontWeight: FontWeight.bold,
+                    textColor: AppColors.lightGreyColor,
                   ),
-                  Expanded(
-                    flex: 1,
-                    child: ReUsableContainer(
-                      color: Colors.white,
-                      padding: const EdgeInsets.all(8.0),
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: ListTile(
-                          visualDensity: VisualDensity.compact,
-                          contentPadding: EdgeInsets.zero,
-                          leading: Image.asset('assets/images/likes.png'),
-                          title: CustomTextWidget(
-                            text: 'LIKES',
-                            fontSize: 12.0,
-                            fontWeight: FontWeight.bold,
-                            textColor: AppColors.lightGreyColor,
-                          ),
-                          subtitle: const CustomTextWidget(
-                            text: '64',
-                            fontSize: 22.0,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                    ),
+                  subtitle: const CustomTextWidget(
+                    text: '1000',
+                    fontSize: 22.0,
+                    fontWeight: FontWeight.bold,
                   ),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Expanded(
-                    flex: 1,
-                    child: ReUsableContainer(
-                      color: Colors.white,
-                      padding: const EdgeInsets.all(8.0),
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: ListTile(
-                          visualDensity: VisualDensity.compact,
-                          contentPadding: EdgeInsets.zero,
-                          leading: Image.asset('assets/images/favourites.png'),
-                          title: CustomTextWidget(
-                            text: 'FAVOURITES',
-                            fontSize: 12.0,
-                            fontWeight: FontWeight.bold,
-                            textColor: AppColors.lightGreyColor,
-                          ),
-                          subtitle: const CustomTextWidget(
-                            text: '85',
-                            fontSize: 22.0,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    flex: 1,
-                    child: ReUsableContainer(
-                      color: Colors.white,
-                      padding: const EdgeInsets.all(8.0),
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: ListTile(
-                          visualDensity: VisualDensity.compact,
-                          contentPadding: EdgeInsets.zero,
-                          leading: Image.asset('assets/images/views.png'),
-                          title: CustomTextWidget(
-                            text: 'VIEWS',
-                            fontSize: 12.0,
-                            fontWeight: FontWeight.bold,
-                            textColor: AppColors.lightGreyColor,
-                          ),
-                          subtitle: const CustomTextWidget(
-                            text: '436',
-                            fontSize: 22.0,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              const ReUsableContainer(
-                height: double.infinity,
-                width: double.infinity,
-                color: Colors.blueAccent,
-                padding: EdgeInsets.all(8.0),
-                child: Padding(
-                  padding: EdgeInsets.all(8.0),
                 ),
               ),
-            ],
-          ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Expanded(
+                  flex: 1,
+                  child: ReUsableContainer(
+                    color: Colors.white,
+                    padding: const EdgeInsets.all(8.0),
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: ListTile(
+                        visualDensity: VisualDensity.compact,
+                        contentPadding: EdgeInsets.zero,
+                        leading: Image.asset('assets/images/favourites.png'),
+                        title: CustomTextWidget(
+                          text: 'FAVOURITES',
+                          fontSize: 12.0,
+                          fontWeight: FontWeight.bold,
+                          textColor: AppColors.lightGreyColor,
+                        ),
+                        subtitle: const CustomTextWidget(
+                          text: '85',
+                          fontSize: 22.0,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                Expanded(
+                  flex: 1,
+                  child: ReUsableContainer(
+                    color: Colors.white,
+                    padding: const EdgeInsets.all(8.0),
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: ListTile(
+                        visualDensity: VisualDensity.compact,
+                        contentPadding: EdgeInsets.zero,
+                        leading: Image.asset('assets/images/likes.png'),
+                        title: CustomTextWidget(
+                          text: 'LIKES',
+                          fontSize: 12.0,
+                          fontWeight: FontWeight.bold,
+                          textColor: AppColors.lightGreyColor,
+                        ),
+                        subtitle: const CustomTextWidget(
+                          text: '64',
+                          fontSize: 22.0,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+
+            // const ReUsableContainer(
+            //   height: double.infinity,
+            //   width: double.infinity,
+            //   color: Colors.blueAccent,
+            //   padding: EdgeInsets.all(8.0),
+            //   child: Padding(
+            //     padding: EdgeInsets.all(8.0),
+            //   ),
+            // ),
+          ],
         ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
+      floatingActionButton: SpeedDial(
+        // animatedIcon: AnimatedIcons.add_event,
+        animatedIconTheme: const IconThemeData(size: 22.0),
+        icon: Icons.add,
+        activeIcon: Icons.close,
+        spacing: 3,
+        openCloseDial: isDialOpen,
+        childPadding: const EdgeInsets.all(5),
+        spaceBetweenChildren: 4,
+
+        buttonSize: const Size.fromRadius(35),
+        iconTheme: const IconThemeData(size: 22),
+        label: extend ? const Text("Open") : null,
+        activeLabel: extend ? const Text("Close") : null,
+        childrenButtonSize: const Size.fromRadius(35),
+        visible: true,
+        direction: SpeedDialDirection.up,
+        switchLabelPosition: false,
+        closeManually: false,
+
+        renderOverlay: true,
+        // onOpen: () => debugPrint('OPENING DIAL'),
+        // onClose: () => debugPrint('DIAL CLOSED'),
+        useRotationAnimation: true,
+        foregroundColor: Colors.white,
+        backgroundColor: AppColors.blueTextColor,
+        activeForegroundColor: Colors.white,
+        activeBackgroundColor: AppColors.blueTextColor,
+        elevation: 8.0,
+        animationCurve: Curves.elasticInOut,
+        isOpenOnStart: false,
+        animationDuration: const Duration(milliseconds: 300),
+        // shape: customDialRoot
+        //     ? const RoundedRectangleBorder()
+        //     : const StadiumBorder(),
+        // childMargin: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+        children: [
+          SpeedDialChild(
+            child: Image.asset('assets/images/pets.png'),
+            backgroundColor: AppColors.blueTextColor,
+            foregroundColor: Colors.white,
+          ),
+          SpeedDialChild(
+            child: Image.asset('assets/images/checkroom.png'),
+            backgroundColor: AppColors.blueTextColor,
+            foregroundColor: Colors.white,
+            // label: 'Second',
+            // onTap: () {},
+          ),
+          SpeedDialChild(
+            child: Image.asset('assets/images/self_care.png'),
+            backgroundColor: AppColors.blueTextColor,
+            foregroundColor: Colors.white,
+          ),
+        ],
       ),
     );
   }
