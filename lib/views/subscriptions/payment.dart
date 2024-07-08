@@ -113,7 +113,13 @@ class PaymentScreen extends StatelessWidget {
                 CustomButton(
                   buttonText: 'Process',
                   onTap: () {
-                    Get.to(() => const SuccessScreen(),
+                    Get.to(
+                        () => const SuccessScreen(
+                              title: 'Congratulations!',
+                              subtitle:
+                                  'Your Subscription has been purchased, we will send you confirmation email shortly.',
+                              imagePath: 'assets/images/success.png',
+                            ),
                         transition: Transition.rightToLeft);
                   },
                 )

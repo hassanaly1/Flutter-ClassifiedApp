@@ -5,7 +5,15 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class SuccessScreen extends StatelessWidget {
-  const SuccessScreen({super.key});
+  final String imagePath;
+  final String title;
+  final String subtitle;
+
+  const SuccessScreen(
+      {super.key,
+      required this.imagePath,
+      required this.title,
+      required this.subtitle});
 
   @override
   Widget build(BuildContext context) {
@@ -18,22 +26,21 @@ class SuccessScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Image.asset('assets/images/success.png'),
+                Image.asset(imagePath),
                 const SizedBox(height: 20.0),
-                const CustomTextWidget(
-                  text: 'Congratulations!',
+                CustomTextWidget(
+                  text: title,
                   fontSize: 16.0,
                   fontWeight: FontWeight.w600,
-                  textColor: Color(0XFF475569),
+                  textColor: const Color(0XFF475569),
                 ),
                 const SizedBox(height: 20.0),
-                const CustomTextWidget(
-                  text:
-                      'Your Subscription has been purchased, we will send you confirmation email shortly.',
+                CustomTextWidget(
+                  text: subtitle,
                   fontSize: 12.0,
                   maxLines: 5,
                   textAlign: TextAlign.center,
-                  textColor: Color(0XFF475569),
+                  textColor: const Color(0XFF475569),
                 ),
                 const SizedBox(height: 20.0),
                 CustomButton(

@@ -126,7 +126,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     CustomTextWidget(
-                                      text: 'Orders',
+                                      text: 'My Orders',
                                       fontSize: 12.0,
                                       fontWeight: FontWeight.bold,
                                     ),
@@ -155,7 +155,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
                             ),
                             child: ReUsableContainer(
                               color: Colors.white,
-                              padding: const EdgeInsets.all(8.0),
+                              padding:
+                                  const EdgeInsets.symmetric(vertical: 8.0),
                               child: Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Column(
@@ -170,7 +171,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                         Flexible(
                                           child: CustomTextWidget(
                                             text: 'Subscriptions',
-                                            fontSize: 12.0,
+                                            fontSize: 11.0,
                                             fontWeight: FontWeight.bold,
                                           ),
                                         ),

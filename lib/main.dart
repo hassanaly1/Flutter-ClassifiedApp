@@ -1,3 +1,4 @@
+import 'package:classified_app/helpers/appcolors.dart';
 import 'package:classified_app/start.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -15,9 +16,14 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
-        useMaterial3: true,
-      ),
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
+          useMaterial3: true,
+          checkboxTheme: CheckboxThemeData(
+            fillColor: WidgetStateProperty.all(AppColors.primaryColor),
+          ),
+          radioTheme: RadioThemeData(
+            fillColor: WidgetStateProperty.all(AppColors.primaryColor),
+          )),
       home: const StartScreen(),
     );
   }

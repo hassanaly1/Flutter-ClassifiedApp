@@ -1,6 +1,7 @@
 import 'package:classified_app/helpers/appcolors.dart';
 import 'package:classified_app/helpers/custom_text.dart';
 import 'package:classified_app/helpers/reusable_container.dart';
+import 'package:classified_app/views/dashboard/active_listing/checkout.dart';
 import 'package:classified_app/views/dashboard/create_ad.dart';
 import 'package:classified_app/views/messages/message_detail.dart';
 import 'package:flutter/material.dart';
@@ -18,11 +19,13 @@ class ActiveListingDetailScreen extends StatelessWidget {
           backgroundColor: AppColors.textColor,
           forceMaterialTransparency: true,
           titleSpacing: 0.0,
-          leading: Image.asset('assets/images/chat.png'),
+          // leading: Image.asset('assets/images/chat.png'),
+          centerTitle: true,
+          automaticallyImplyLeading: false,
           title: const CustomTextWidget(
-            text: 'My Chats',
-            fontSize: 20.0,
-            fontWeight: FontWeight.w700,
+            text: 'Charlie Cooper',
+            fontSize: 16.0,
+            fontWeight: FontWeight.w500,
             textColor: Colors.black,
           ),
           actions: [
@@ -174,7 +177,7 @@ class ActiveListingDetailScreen extends StatelessWidget {
                             textColor: Colors.black,
                           ),
                           InkWell(
-                              onTap: () => Get.to(() => MessageDetailScreen(),
+                              onTap: () => Get.to(() => const MessageDetailScreen(),
                                   transition: Transition.rightToLeft),
                               child:
                                   const CustomSecondaryButton(text: 'Message'))
@@ -219,20 +222,24 @@ class ActiveListingDetailScreen extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.only(
                             top: 8.0, left: 8.0, right: 8.0),
-                        child: Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(8.0),
-                            color: AppColors.buttonPrimaryColor,
-                          ),
-                          child: const Center(
-                            child: Padding(
-                              padding: EdgeInsets.symmetric(
-                                  horizontal: 16.0, vertical: 8.0),
-                              child: CustomTextWidget(
-                                text: 'Buy Now',
-                                fontWeight: FontWeight.w600,
-                                fontSize: 10.0,
-                                textColor: Colors.white,
+                        child: InkWell(
+                          onTap: () => Get.to(() => const CheckoutsScreen(),
+                              transition: Transition.rightToLeft),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(8.0),
+                              color: AppColors.buttonPrimaryColor,
+                            ),
+                            child: const Center(
+                              child: Padding(
+                                padding: EdgeInsets.symmetric(
+                                    horizontal: 16.0, vertical: 8.0),
+                                child: CustomTextWidget(
+                                  text: 'Buy Now',
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 10.0,
+                                  textColor: Colors.white,
+                                ),
                               ),
                             ),
                           ),
@@ -283,7 +290,7 @@ class ActiveListingDetailScreen extends StatelessWidget {
                           fontWeight: FontWeight.w500,
                           textColor: Colors.black,
                         ),
-                        SizedBox(height: 8.0),
+                        const SizedBox(height: 8.0),
                         Container(
                             decoration: BoxDecoration(
                               border: Border.all(color: Colors.black12),
@@ -347,7 +354,7 @@ class ActiveListingDetailScreen extends StatelessWidget {
                           fontWeight: FontWeight.w500,
                           textColor: Colors.black,
                         ),
-                        SizedBox(height: 8.0),
+                        const SizedBox(height: 8.0),
                         ListView.builder(
                           shrinkWrap: true,
                           physics: const NeverScrollableScrollPhysics(),

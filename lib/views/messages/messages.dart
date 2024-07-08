@@ -21,8 +21,8 @@ class MessageScreen extends StatelessWidget {
           leading: Image.asset('assets/images/chat.png'),
           title: const CustomTextWidget(
             text: 'My Chats',
-            fontSize: 20.0,
-            fontWeight: FontWeight.w700,
+            fontSize: 16.0,
+            fontWeight: FontWeight.w500,
             textColor: Colors.black,
           ),
           actions: [
