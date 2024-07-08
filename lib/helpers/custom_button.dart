@@ -51,7 +51,7 @@ class CustomButton extends StatelessWidget {
             child: Center(
               child: Text(
                 buttonText,
-                style: GoogleFonts.plusJakartaSans(
+                style: GoogleFonts.poppins(
                   fontSize: fontSize ?? 16,
                   color: textColor ?? AppColors.textColor,
                   fontWeight: FontWeight.w500,

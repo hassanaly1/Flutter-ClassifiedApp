@@ -42,7 +42,7 @@ class ChangePasswordScreen extends StatelessWidget {
                   SizedBox(height: context.height * 0.02),
                   Text(
                     'Set New Password.',
-                    style: GoogleFonts.plusJakartaSans(
+                    style: GoogleFonts.poppins(
                       fontSize: 26,
                       fontWeight: FontWeight.w600,
                       color: AppColors.primaryColor,
@@ -51,7 +51,7 @@ class ChangePasswordScreen extends StatelessWidget {
                   SizedBox(height: context.height * 0.01),
                   Text(
                     'Please enter your new password',
-                    style: GoogleFonts.plusJakartaSans(
+                    style: GoogleFonts.poppins(
                       fontSize: 14,
                       fontWeight: FontWeight.w600,
                       color: AppColors.lightGreyColor,
@@ -60,7 +60,7 @@ class ChangePasswordScreen extends StatelessWidget {
                   SizedBox(height: context.height * 0.01),
                   Text(
                     'Password',
-                    style: GoogleFonts.plusJakartaSans(
+                    style: GoogleFonts.poppins(
                       fontSize: 14,
                       fontWeight: FontWeight.w600,
                       color: AppColors.blackTextColor,
@@ -77,7 +77,7 @@ class ChangePasswordScreen extends StatelessWidget {
                       ),
                       hintText: 'Password',
                       prefixIcon: const Icon(Icons.lock),
-                      hintStyle: GoogleFonts.plusJakartaSans(
+                      hintStyle: GoogleFonts.poppins(
                         fontSize: 14,
                         color: AppColors.lightTextColor,
                       ),
@@ -86,7 +86,7 @@ class ChangePasswordScreen extends StatelessWidget {
                   SizedBox(height: context.height * 0.01),
                   Text(
                     'Change Password',
-                    style: GoogleFonts.plusJakartaSans(
+                    style: GoogleFonts.poppins(
                       fontSize: 14,
                       fontWeight: FontWeight.w600,
                       color: AppColors.blackTextColor,
@@ -103,7 +103,7 @@ class ChangePasswordScreen extends StatelessWidget {
                       ),
                       hintText: 'Change Password',
                       prefixIcon: const Icon(Icons.lock),
-                      hintStyle: GoogleFonts.plusJakartaSans(
+                      hintStyle: GoogleFonts.poppins(
                         fontSize: 14,
                         color: AppColors.lightTextColor,
                       ),
@@ -128,7 +128,7 @@ class ChangePasswordScreen extends StatelessWidget {
           const Spacer(),
           Text(
             '© 2024 | Pupify.ca All Rights Reserved',
-            style: GoogleFonts.plusJakartaSans(
+            style: GoogleFonts.poppins(
               color: Colors.white,
               fontSize: 12,
               fontWeight: FontWeight.bold,
@@ -136,7 +136,7 @@ class ChangePasswordScreen extends StatelessWidget {
           ),
           Text(
             'Privacy Policy   Terms Conditions',
-            style: GoogleFonts.plusJakartaSans(
+            style: GoogleFonts.poppins(
               color: Colors.white,
               fontSize: 12,
               fontWeight: FontWeight.bold,

@@ -1,6 +1,7 @@
 import 'package:classified_app/helpers/appcolors.dart';
 import 'package:classified_app/helpers/custom_text.dart';
 import 'package:classified_app/helpers/reusable_container.dart';
+import 'package:classified_app/views/dashboard/dashboard.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -45,7 +46,7 @@ class CreateAdScreen extends StatelessWidget {
             ),
           ],
         ),
-        drawer: const Drawer(),
+        drawer: const MyDrawerWidget(),
         body: SingleChildScrollView(
           child: Padding(
             padding:
@@ -59,7 +60,7 @@ class CreateAdScreen extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                   textColor: AppColors.buttonPrimaryColor,
                 ),
-                Divider(),
+                const Divider(),
                 const SizedBox(height: 12.0),
                 const CustomTextWidget(
                   text: 'Select Product',
@@ -155,33 +156,30 @@ class CreateAdScreen extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Row(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Image.asset('assets/images/doggy.png'),
-                                  const SizedBox(width: 6.0),
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      CustomTextWidget(
-                                        text: 'Ad Duration',
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.w600,
-                                        textColor: AppColors.lightTextColor,
-                                      ),
-                                      const SizedBox(height: 22.0),
-                                      CustomTextWidget(
-                                        text: 'Ad cost \$76 for --- days',
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.w600,
-                                        textColor: AppColors.lightTextColor,
-                                      ),
-                                    ],
-                                  ),
-                                ],
+                              Image.asset('assets/images/doggy.png'),
+                              const SizedBox(width: 6.0),
+                              Flexible(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    CustomTextWidget(
+                                      text: 'Ad Duration',
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w600,
+                                      textColor: AppColors.lightTextColor,
+                                    ),
+                                    const SizedBox(height: 22.0),
+                                    CustomTextWidget(
+                                      text: 'Ad cost \$76 for 5 days',
+                                      fontSize: 10,
+                                      maxLines: 2,
+                                      fontWeight: FontWeight.w600,
+                                      textColor: AppColors.lightTextColor,
+                                    ),
+                                  ],
+                                ),
                               ),
                               const CustomSecondaryButton(text: 'Select'),
                             ],
@@ -208,10 +206,12 @@ class CreateAdScreen extends StatelessWidget {
 
 class CustomSecondaryButton extends StatelessWidget {
   final String text;
+  final bool showBackgroundColor;
 
   const CustomSecondaryButton({
     super.key,
     required this.text,
+    this.showBackgroundColor = true,
   });
 
   @override
@@ -219,7 +219,8 @@ class CustomSecondaryButton extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8.0),
-        color: AppColors.blueTextColor,
+        border: Border.all(color: AppColors.blueTextColor),
+        color: showBackgroundColor ? AppColors.blueTextColor : Colors.white,
       ),
       child: Center(
         child: Padding(
@@ -228,7 +229,8 @@ class CustomSecondaryButton extends StatelessWidget {
             text: text,
             fontWeight: FontWeight.w600,
             fontSize: 10.0,
-            textColor: Colors.white,
+            textColor:
+                showBackgroundColor ? Colors.white : AppColors.blueTextColor,
           ),
         ),
       ),

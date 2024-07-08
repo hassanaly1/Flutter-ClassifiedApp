@@ -11,109 +11,111 @@ class OtpScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColors.primaryColor,
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        forceMaterialTransparency: true,
-      ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          const Spacer(),
-          Center(
-            child: Container(
-              // height: context.height * 0.5,
-              width: context.width * 0.8,
-              padding:
-                  const EdgeInsets.symmetric(vertical: 12.0, horizontal: 16.0),
-              decoration: BoxDecoration(
-                  color: AppColors.textColor,
-                  borderRadius: BorderRadius.circular(22.0)),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Center(
-                    child: Image.asset(
-                      'assets/images/app-logo.png',
-                      height: 30,
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: AppColors.primaryColor,
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          forceMaterialTransparency: true,
+        ),
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Spacer(),
+            Center(
+              child: Container(
+                // height: context.height * 0.5,
+                width: context.width * 0.8,
+                padding: const EdgeInsets.symmetric(
+                    vertical: 12.0, horizontal: 16.0),
+                decoration: BoxDecoration(
+                    color: AppColors.textColor,
+                    borderRadius: BorderRadius.circular(22.0)),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Center(
+                      child: Image.asset(
+                        'assets/images/app-logo.png',
+                        height: 30,
+                      ),
                     ),
-                  ),
-                  SizedBox(height: context.height * 0.02),
-                  Text(
-                    'Verification.',
-                    style: GoogleFonts.plusJakartaSans(
-                      fontSize: 30,
-                      fontWeight: FontWeight.w600,
-                      color: AppColors.primaryColor,
+                    SizedBox(height: context.height * 0.02),
+                    Text(
+                      'Verification.',
+                      style: GoogleFonts.poppins(
+                        fontSize: 30,
+                        fontWeight: FontWeight.w600,
+                        color: AppColors.primaryColor,
+                      ),
                     ),
-                  ),
-                  SizedBox(height: context.height * 0.01),
-                  Text(
-                    'Enter your 6 digit OTP code we sent to your email address',
-                    style: GoogleFonts.plusJakartaSans(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w600,
-                      color: AppColors.lightGreyColor,
+                    SizedBox(height: context.height * 0.01),
+                    Text(
+                      'Enter your 6 digit OTP code we sent to your email address',
+                      style: GoogleFonts.poppins(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600,
+                        color: AppColors.lightGreyColor,
+                      ),
                     ),
-                  ),
-                  SizedBox(height: context.height * 0.01),
-                  Pinput(
-                    length: 6,
-                    onCompleted: (pin) => print(pin),
-                  ),
-                  SizedBox(height: context.height * 0.01),
-                  CustomButton(
-                    buttonText: 'Verify',
-                    onTap: () {
-                      Get.offAll(
-                        () => const LoginScreen(),
-                        transition: Transition.size,
-                        duration: const Duration(seconds: 1),
-                      );
-                    },
-                  ),
-                  SizedBox(height: context.height * 0.01),
-                  Text(
-                    'Didn’t receive the code? ',
-                    style: GoogleFonts.plusJakartaSans(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 14.0,
+                    SizedBox(height: context.height * 0.01),
+                    Pinput(
+                      length: 6,
+                      onCompleted: (pin) => print(pin),
                     ),
-                  ),
-                  SizedBox(height: context.height * 0.01),
-                  Text(
-                    'Re-send OTP Code in 23.s',
-                    style: GoogleFonts.plusJakartaSans(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 14.0,
-                      color: AppColors.buttonPrimaryColor,
+                    SizedBox(height: context.height * 0.01),
+                    CustomButton(
+                      buttonText: 'Verify',
+                      onTap: () {
+                        Get.offAll(
+                          () => const LoginScreen(),
+                          transition: Transition.size,
+                          duration: const Duration(seconds: 1),
+                        );
+                      },
                     ),
-                  ),
-                ],
+                    SizedBox(height: context.height * 0.01),
+                    Text(
+                      'Didn’t receive the code? ',
+                      style: GoogleFonts.poppins(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 14.0,
+                      ),
+                    ),
+                    SizedBox(height: context.height * 0.01),
+                    Text(
+                      'Re-send OTP Code in 23.s',
+                      style: GoogleFonts.poppins(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 14.0,
+                        color: AppColors.buttonPrimaryColor,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
-          ),
-          const Spacer(),
-          Text(
-            '© 2024 | Pupify.ca All Rights Reserved',
-            style: GoogleFonts.plusJakartaSans(
-              color: Colors.white,
-              fontSize: 12,
-              fontWeight: FontWeight.bold,
+            const Spacer(),
+            Text(
+              '© 2024 | Pupify.ca All Rights Reserved',
+              style: GoogleFonts.poppins(
+                color: Colors.white,
+                fontSize: 12,
+                fontWeight: FontWeight.bold,
+              ),
             ),
-          ),
-          Text(
-            'Privacy Policy   Terms Conditions',
-            style: GoogleFonts.plusJakartaSans(
-              color: Colors.white,
-              fontSize: 12,
-              fontWeight: FontWeight.bold,
+            Text(
+              'Privacy Policy   Terms Conditions',
+              style: GoogleFonts.poppins(
+                color: Colors.white,
+                fontSize: 12,
+                fontWeight: FontWeight.bold,
+              ),
             ),
-          ),
-          SizedBox(height: context.height * 0.02),
-        ],
+            SizedBox(height: context.height * 0.02),
+          ],
+        ),
       ),
     );
   }

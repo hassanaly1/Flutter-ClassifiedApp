@@ -1,4 +1,5 @@
 import 'package:classified_app/views/dashboard/dashboard.dart';
+import 'package:classified_app/views/messages/messages.dart';
 import 'package:classified_app/views/orders/orders.dart';
 import 'package:classified_app/views/store/store.dart';
 import 'package:flutter/material.dart';
@@ -78,10 +79,10 @@ class BottomBar extends StatelessWidget {
 class NavigationController extends GetxController {
   Rx<int> selectedIndex = 0.obs;
 
-  final screens = [
-    const DashboardScreen(),
-    Container(color: Colors.green),
-    const OrdersScreen(),
-    const StoreScreen()
+  final screens = const [
+    DashboardScreen(),
+    MessageScreen(),
+    OrdersScreen(),
+    StoreScreen()
   ];
 }

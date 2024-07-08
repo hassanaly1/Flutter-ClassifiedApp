@@ -2,6 +2,7 @@ import 'package:classified_app/helpers/appcolors.dart';
 import 'package:classified_app/helpers/custom_text.dart';
 import 'package:classified_app/helpers/reusable_container.dart';
 import 'package:classified_app/views/dashboard/create_ad.dart';
+import 'package:classified_app/views/dashboard/dashboard.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -45,7 +46,7 @@ class OrdersScreen extends StatelessWidget {
             ),
           ],
         ),
-        drawer: const Drawer(),
+        drawer: const MyDrawerWidget(),
         body: ListView.builder(
           shrinkWrap: true,
           itemCount: 10,

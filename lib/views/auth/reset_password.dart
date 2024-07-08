@@ -42,7 +42,7 @@ class ResetPassword extends StatelessWidget {
                   SizedBox(height: context.height * 0.02),
                   Text(
                     'Reset Your Password.',
-                    style: GoogleFonts.plusJakartaSans(
+                    style: GoogleFonts.poppins(
                       fontSize: 26,
                       fontWeight: FontWeight.w600,
                       color: AppColors.primaryColor,
@@ -52,7 +52,7 @@ class ResetPassword extends StatelessWidget {
                   Center(
                     child: Text(
                       'Please enter your Email address',
-                      style: GoogleFonts.plusJakartaSans(
+                      style: GoogleFonts.poppins(
                         fontSize: 14,
                         fontWeight: FontWeight.w600,
                         color: AppColors.lightGreyColor,
@@ -62,7 +62,7 @@ class ResetPassword extends StatelessWidget {
                   SizedBox(height: context.height * 0.01),
                   Text(
                     'Email Address',
-                    style: GoogleFonts.plusJakartaSans(
+                    style: GoogleFonts.poppins(
                       fontSize: 14,
                       fontWeight: FontWeight.w600,
                       color: AppColors.blackTextColor,
@@ -77,7 +77,7 @@ class ResetPassword extends StatelessWidget {
                       ),
                       hintText: 'Email Address',
                       prefixIcon: const Icon(Icons.email_outlined),
-                      hintStyle: GoogleFonts.plusJakartaSans(
+                      hintStyle: GoogleFonts.poppins(
                         fontSize: 14,
                         color: AppColors.lightTextColor,
                       ),
@@ -102,7 +102,7 @@ class ResetPassword extends StatelessWidget {
           const Spacer(),
           Text(
             '© 2024 | Pupify.ca All Rights Reserved',
-            style: GoogleFonts.plusJakartaSans(
+            style: GoogleFonts.poppins(
               color: Colors.white,
               fontSize: 12,
               fontWeight: FontWeight.bold,
@@ -110,7 +110,7 @@ class ResetPassword extends StatelessWidget {
           ),
           Text(
             'Privacy Policy   Terms Conditions',
-            style: GoogleFonts.plusJakartaSans(
+            style: GoogleFonts.poppins(
               color: Colors.white,
               fontSize: 12,
               fontWeight: FontWeight.bold,

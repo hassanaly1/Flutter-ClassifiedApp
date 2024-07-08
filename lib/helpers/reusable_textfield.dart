@@ -52,7 +52,7 @@ class ReUsableTextField extends StatelessWidget {
         validator: validator,
         maxLines: maxLines,
         obscureText: obscureText,
-        style: GoogleFonts.plusJakartaSans(
+        style: GoogleFonts.poppins(
           fontSize: 14,
           fontWeight: FontWeight.w300,
           color: Colors.black87,
@@ -63,7 +63,7 @@ class ReUsableTextField extends StatelessWidget {
             FilteringTextInputFormatter.digitsOnly,
         ],
         decoration: InputDecoration(
-          contentPadding: const EdgeInsets.all(4.0),
+          // contentPadding: const EdgeInsets.all(8.0),
           // contentPadding: EdgeInsets.symmetric(vertical: 4.0),
           // isCollapsed: true,
           isDense: true,
@@ -72,12 +72,12 @@ class ReUsableTextField extends StatelessWidget {
 
           suffixIcon: suffixIcon,
           hintText: hintText,
-          hintStyle: GoogleFonts.plusJakartaSans(
+          hintStyle: GoogleFonts.poppins(
             fontSize: 10,
             fontWeight: FontWeight.w300,
             color: AppColors.lightTextColor,
           ),
-          errorStyle: GoogleFonts.plusJakartaSans(
+          errorStyle: GoogleFonts.poppins(
             fontSize: 8.0,
             fontWeight: FontWeight.w400,
             color: Colors.redAccent,

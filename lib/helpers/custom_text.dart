@@ -31,10 +31,10 @@ class CustomTextWidget extends StatelessWidget {
       textAlign: textAlign,
       maxLines: maxLines ?? 1,
       overflow: TextOverflow.ellipsis,
-      style: GoogleFonts.inter(
+      style: GoogleFonts.poppins(
         decoration: decoration,
         fontStyle: fontStyle ?? FontStyle.normal,
-        fontSize: fontSize ?? 14,
+        fontSize: fontSize ?? 12.0,
         fontWeight: fontWeight ?? FontWeight.w400,
         color: textColor ?? AppColors.blueTextColor,
       ),
