@@ -10,76 +10,78 @@ class MessageDetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: AppColors.textColor,
-        titleSpacing: 0.0,
-        leading: const Padding(
-          padding: EdgeInsets.all(8.0),
-          child: CircleAvatar(
-            backgroundImage: AssetImage('assets/images/store_profile.png'),
-          ),
-        ),
-        title: const CustomTextWidget(
-          text: 'Jane Smith',
-          fontSize: 16.0,
-          fontWeight: FontWeight.w600,
-          textColor: Colors.black,
-        ),
-        actions: [
-          IconButton(
-            onPressed: () {
-              Get.back();
-            },
-            icon: Container(
-              height: 40,
-              width: 40,
-              decoration: BoxDecoration(
-                color: Colors.transparent,
-                shape: BoxShape.circle,
-                border: Border.all(color: AppColors.blackTextColor),
-              ),
-              child: Icon(
-                Icons.arrow_back_ios_new,
-                size: 20.0,
-                color: AppColors.blackTextColor,
-              ),
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: AppColors.textColor,
+          titleSpacing: 0.0,
+          leading: const Padding(
+            padding: EdgeInsets.all(8.0),
+            child: CircleAvatar(
+              backgroundImage: AssetImage('assets/images/store_profile.png'),
             ),
           ),
-        ],
-      ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-        child: Column(
-          children: [
-            Expanded(
-              child: MessagesPart(),
-            ),
-            const SizedBox(height: 8.0),
-            TextFormField(
-              decoration: InputDecoration(
-                border: OutlineInputBorder(
-                  borderSide: BorderSide(color: AppColors.lightGreyColor),
-                  borderRadius: BorderRadius.circular(12.0),
+          title: const CustomTextWidget(
+            text: 'Jane Smith',
+            fontSize: 16.0,
+            fontWeight: FontWeight.w600,
+            textColor: Colors.black,
+          ),
+          actions: [
+            IconButton(
+              onPressed: () {
+                Get.back();
+              },
+              icon: Container(
+                height: 40,
+                width: 40,
+                decoration: BoxDecoration(
+                  color: Colors.transparent,
+                  shape: BoxShape.circle,
+                  border: Border.all(color: AppColors.blackTextColor),
                 ),
-                hintText: 'Write your message',
-                prefixIcon: const Icon(Icons.add),
-                enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: AppColors.lightGreyColor),
-                  borderRadius: BorderRadius.circular(12.0),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: AppColors.buttonPrimaryColor),
-                  borderRadius: BorderRadius.circular(12.0),
-                ),
-                suffixIcon: const Icon(CupertinoIcons.arrowtriangle_right),
-                hintStyle: GoogleFonts.poppins(
-                  fontSize: 14,
-                  color: AppColors.lightTextColor,
+                child: Icon(
+                  Icons.arrow_back_ios_new,
+                  size: 20.0,
+                  color: AppColors.blackTextColor,
                 ),
               ),
             ),
           ],
+        ),
+        body: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+          child: Column(
+            children: [
+              Expanded(
+                child: MessagesPart(),
+              ),
+              const SizedBox(height: 8.0),
+              TextFormField(
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(
+                    borderSide: BorderSide(color: AppColors.lightGreyColor),
+                    borderRadius: BorderRadius.circular(12.0),
+                  ),
+                  hintText: 'Write your message',
+                  prefixIcon: const Icon(Icons.add),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: AppColors.lightGreyColor),
+                    borderRadius: BorderRadius.circular(12.0),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: AppColors.buttonPrimaryColor),
+                    borderRadius: BorderRadius.circular(12.0),
+                  ),
+                  suffixIcon: const Icon(CupertinoIcons.arrowtriangle_right),
+                  hintStyle: GoogleFonts.poppins(
+                    fontSize: 14,
+                    color: AppColors.lightTextColor,
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

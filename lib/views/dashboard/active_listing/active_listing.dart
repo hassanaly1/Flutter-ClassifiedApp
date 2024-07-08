@@ -2,6 +2,7 @@ import 'package:buttons_tabbar/buttons_tabbar.dart';
 import 'package:classified_app/helpers/appcolors.dart';
 import 'package:classified_app/helpers/custom_text.dart';
 import 'package:classified_app/helpers/reusable_container.dart';
+import 'package:classified_app/views/dashboard/active_listing/active_listing_detail.dart';
 import 'package:classified_app/views/dashboard/dashboard.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -147,83 +148,87 @@ class CustomTabbarView extends StatelessWidget {
                 crossAxisSpacing: 12.0,
               ),
               itemBuilder: (context, index) {
-                return ReUsableContainer(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Image.asset(
-                        'assets/images/1.png',
-                        height: 80,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          const CustomTextWidget(text: 'Dogs for sale'),
-                          IconButton(
-                              onPressed: () {},
-                              icon: Icon(
-                                Icons.favorite_border,
-                                color: AppColors.blueTextColor,
-                              ))
-                        ],
-                      ),
-                      const CustomTextWidget(
-                        text: '\$57.70',
-                        fontWeight: FontWeight.w600,
-                      ),
-                      Row(
-                        children: [
-                          RatingBar.builder(
-                            initialRating: 3,
-                            minRating: 1,
-                            itemSize: 15.0,
-                            direction: Axis.horizontal,
-                            allowHalfRating: true,
-                            itemCount: 5,
-                            itemBuilder: (context, _) => Icon(
-                              Icons.star,
-                              color: AppColors.buttonPrimaryColor,
+                return InkWell(
+                  onTap: () => Get.to(() => const ActiveListingDetailScreen(),
+                      transition: Transition.rightToLeft),
+                  child: ReUsableContainer(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Image.asset(
+                          'assets/images/1.png',
+                          height: 80,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            const CustomTextWidget(text: 'Dogs for sale'),
+                            IconButton(
+                                onPressed: () {},
+                                icon: Icon(
+                                  Icons.favorite_border,
+                                  color: AppColors.blueTextColor,
+                                ))
+                          ],
+                        ),
+                        const CustomTextWidget(
+                          text: '\$57.70',
+                          fontWeight: FontWeight.w600,
+                        ),
+                        Row(
+                          children: [
+                            RatingBar.builder(
+                              initialRating: 3,
+                              minRating: 1,
+                              itemSize: 15.0,
+                              direction: Axis.horizontal,
+                              allowHalfRating: true,
+                              itemCount: 5,
+                              itemBuilder: (context, _) => Icon(
+                                Icons.star,
+                                color: AppColors.buttonPrimaryColor,
+                              ),
+                              onRatingUpdate: (rating) {
+                                print(rating);
+                              },
                             ),
-                            onRatingUpdate: (rating) {
-                              print(rating);
-                            },
-                          ),
-                          const SizedBox(width: 4.0),
-                          CustomTextWidget(
-                            text: '7.5 ',
-                            fontWeight: FontWeight.w600,
-                            fontSize: 10.0,
-                            textColor: AppColors.buttonPrimaryColor,
-                          ),
-                        ],
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Expanded(
-                            child: Container(
-                              height: 30,
-                              color: AppColors.blueTextColor,
-                              child: const Center(
-                                child: CustomTextWidget(
-                                  text: 'BUY',
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 10.0,
-                                  textColor: Colors.white,
+                            const SizedBox(width: 4.0),
+                            CustomTextWidget(
+                              text: '7.5 ',
+                              fontWeight: FontWeight.w600,
+                              fontSize: 10.0,
+                              textColor: AppColors.buttonPrimaryColor,
+                            ),
+                          ],
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Expanded(
+                              child: Container(
+                                height: 30,
+                                color: AppColors.blueTextColor,
+                                child: const Center(
+                                  child: CustomTextWidget(
+                                    text: 'BUY',
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 10.0,
+                                    textColor: Colors.white,
+                                  ),
                                 ),
                               ),
                             ),
-                          ),
-                          IconButton(
-                              onPressed: () {},
-                              icon: Icon(
-                                Icons.shopping_bag_outlined,
-                                color: AppColors.blueTextColor,
-                              ))
-                        ],
-                      )
-                    ],
+                            IconButton(
+                                onPressed: () {},
+                                icon: Icon(
+                                  Icons.shopping_bag_outlined,
+                                  color: AppColors.blueTextColor,
+                                ))
+                          ],
+                        )
+                      ],
+                    ),
                   ),
                 );
               },

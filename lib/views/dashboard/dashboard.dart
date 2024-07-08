@@ -1,7 +1,7 @@
 import 'package:classified_app/helpers/appcolors.dart';
 import 'package:classified_app/helpers/custom_text.dart';
 import 'package:classified_app/helpers/reusable_container.dart';
-import 'package:classified_app/views/dashboard/active_listing.dart';
+import 'package:classified_app/views/dashboard/active_listing/active_listing.dart';
 import 'package:classified_app/views/dashboard/add_services.dart';
 import 'package:classified_app/views/dashboard/bottombar.dart';
 import 'package:classified_app/views/dashboard/create_ad.dart';
