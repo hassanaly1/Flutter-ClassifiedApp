@@ -80,7 +80,7 @@ class ActiveListing extends StatelessWidget {
               ],
             ),
           ),
-          drawer: const MyDrawerWidget(),
+          drawer: MyDrawerWidget(),
           body: const TabBarView(
             children: [
               CustomTabbarView(),

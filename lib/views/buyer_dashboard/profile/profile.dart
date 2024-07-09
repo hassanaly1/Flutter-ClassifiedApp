@@ -1,14 +1,12 @@
 import 'package:classified_app/helpers/appcolors.dart';
 import 'package:classified_app/helpers/custom_button.dart';
 import 'package:classified_app/helpers/custom_text.dart';
-import 'package:classified_app/views/dashboard/create_ad.dart';
 import 'package:classified_app/views/dashboard/dashboard.dart';
-import 'package:classified_app/views/profile/store_verification.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class ProfileScreen extends StatelessWidget {
-  ProfileScreen({super.key});
+class BuyerProfileScreen extends StatelessWidget {
+  BuyerProfileScreen({super.key});
 
   List<String> items = [
     "Profile",
@@ -73,63 +71,6 @@ class ProfileScreen extends StatelessWidget {
                   },
                 ),
               ),
-              InkWell(
-                onTap: () {
-                  Get.to(() => const StoreVerificationScreen(),
-                      transition: Transition.rightToLeft);
-                },
-                child: Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Container(
-                    padding: const EdgeInsets.all(12.0),
-                    decoration: BoxDecoration(
-                      color: const Color(0XFF5790FF),
-                      borderRadius: BorderRadius.circular(12.0),
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Row(
-                                  children: [
-                                    const CustomTextWidget(
-                                      text: 'Get Verified',
-                                      fontSize: 14.0,
-                                      fontWeight: FontWeight.bold,
-                                      textColor: Colors.white,
-                                    ),
-                                    Image.asset('assets/images/verified.png'),
-                                  ],
-                                ),
-                                const SizedBox(height: 8.0),
-                                Container(
-                                  padding: const EdgeInsets.all(4.0),
-                                  decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius:
-                                          BorderRadius.circular(16.0)),
-                                  child: const CustomTextWidget(
-                                    text: 'Gain the trust',
-                                    fontSize: 12.0,
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                        Image.asset('assets/images/apply_now.png'),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
               Padding(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
@@ -185,48 +126,102 @@ class CustomUserCard extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(22.0),
       child: Container(
-        height: 170,
+        height: 180,
         color: Colors.transparent,
         child: Stack(
           children: [
             Align(
               alignment: Alignment.bottomCenter,
               child: Container(
-                padding: EdgeInsets.symmetric(horizontal: context.width * 0.2),
-                height: 120,
+                padding: EdgeInsets.symmetric(horizontal: context.width * 0.03),
+                height: 130,
                 decoration: BoxDecoration(
                   gradient: const LinearGradient(
                     colors: [
-                      Color(0XFFFFAF78),
-                      Color(0XFFF36604),
+                      Color(0XFF0066CC),
+                      Color(0XFF003366),
                     ],
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
                   ),
                   borderRadius: BorderRadius.circular(20.0),
                 ),
-                child: const Column(
+                child: Column(
                   mainAxisAlignment: MainAxisAlignment.end,
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    CustomTextWidget(
-                      text: 'D Heaven',
-                      fontSize: 14.0,
-                      fontWeight: FontWeight.w500,
-                      textColor: Colors.white,
+                    const Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Column(
+                          children: [
+                            CustomTextWidget(
+                              text: 'My Wishlist',
+                              fontSize: 12.0,
+                              fontWeight: FontWeight.w500,
+                              textColor: Colors.white,
+                            ),
+                            CustomTextWidget(
+                              text: '6',
+                              fontSize: 12.0,
+                              fontWeight: FontWeight.w500,
+                              textColor: Colors.white,
+                            ),
+                          ],
+                        ),
+                        CustomTextWidget(
+                          text: 'Otis. Wu',
+                          fontSize: 14.0,
+                          fontWeight: FontWeight.w500,
+                          textColor: Colors.white,
+                        ),
+                        Column(
+                          children: [
+                            CustomTextWidget(
+                              text: 'My Connections',
+                              fontSize: 12.0,
+                              fontWeight: FontWeight.w500,
+                              textColor: Colors.white,
+                            ),
+                            CustomTextWidget(
+                              text: '106',
+                              fontSize: 12.0,
+                              fontWeight: FontWeight.w500,
+                              textColor: Colors.white,
+                            ),
+                          ],
+                        ),
+                      ],
                     ),
-                    SizedBox(height: 8.0),
-                    CustomTextWidget(
+                    const SizedBox(height: 8.0),
+                    const CustomTextWidget(
                       text: 'otiswudaris007@gmail.com',
                       fontSize: 10.0,
                       fontWeight: FontWeight.w400,
                       textColor: Colors.white,
                     ),
-                    SizedBox(height: 8.0),
-                    SizedBox(
-                        width: 150,
-                        child: CustomSecondaryButton(text: 'My Profile')),
-                    SizedBox(height: 8.0),
+                    const SizedBox(height: 8.0),
+                    Container(
+                      width: 120,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(8.0),
+                        border: Border.all(color: AppColors.blueTextColor),
+                        color: AppColors.buttonPrimaryColor,
+                      ),
+                      child: const Center(
+                        child: Padding(
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 16.0, vertical: 8.0),
+                          child: CustomTextWidget(
+                            text: 'My Profile',
+                            fontWeight: FontWeight.w600,
+                            fontSize: 10.0,
+                            textColor: Colors.white,
+                          ),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 8.0),
                   ],
                 ),
               ),

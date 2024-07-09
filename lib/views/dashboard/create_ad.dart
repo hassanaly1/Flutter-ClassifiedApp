@@ -46,7 +46,7 @@ class CreateAdScreen extends StatelessWidget {
             ),
           ],
         ),
-        drawer: const MyDrawerWidget(),
+        drawer: MyDrawerWidget(),
         body: SingleChildScrollView(
           child: Padding(
             padding:

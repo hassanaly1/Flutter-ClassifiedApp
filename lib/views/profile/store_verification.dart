@@ -61,7 +61,7 @@ class _StoreVerificationScreenState extends State<StoreVerificationScreen> {
             ),
           ],
         ),
-        drawer: const MyDrawerWidget(),
+        drawer: MyDrawerWidget(),
         body: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(

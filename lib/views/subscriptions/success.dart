@@ -1,6 +1,8 @@
+import 'package:classified_app/controllers/universal_controller.dart';
 import 'package:classified_app/helpers/custom_button.dart';
 import 'package:classified_app/helpers/custom_text.dart';
-import 'package:classified_app/views/dashboard/bottombar.dart';
+import 'package:classified_app/views/buyer_dashboard/buyer_bottombar.dart';
+import 'package:classified_app/views/dashboard/seller_bottombar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -9,11 +11,13 @@ class SuccessScreen extends StatelessWidget {
   final String title;
   final String subtitle;
 
-  const SuccessScreen(
+  SuccessScreen(
       {super.key,
       required this.imagePath,
       required this.title,
       required this.subtitle});
+
+  final UniversalController controller = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -46,8 +50,11 @@ class SuccessScreen extends StatelessWidget {
                 CustomButton(
                   buttonText: 'Go To Home',
                   onTap: () {
-                    Get.to(() => const BottomBar(),
-                        transition: Transition.rightToLeft);
+                    controller.isSeller.value
+                        ? Get.offAll(() => const SellerBottomBar(),
+                            transition: Transition.rightToLeft)
+                        : Get.offAll(() => const BuyerBottomBar(),
+                            transition: Transition.rightToLeft);
                   },
                 )
               ],

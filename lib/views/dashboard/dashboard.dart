@@ -1,10 +1,14 @@
+import 'package:classified_app/controllers/universal_controller.dart';
 import 'package:classified_app/helpers/appcolors.dart';
 import 'package:classified_app/helpers/custom_text.dart';
 import 'package:classified_app/helpers/reusable_container.dart';
+import 'package:classified_app/views/auth/login.dart';
+import 'package:classified_app/views/buyer_dashboard/buyer_bottombar.dart';
+import 'package:classified_app/views/buyer_dashboard/profile/profile.dart';
 import 'package:classified_app/views/dashboard/active_listing/active_listing.dart';
 import 'package:classified_app/views/dashboard/add_services.dart';
-import 'package:classified_app/views/dashboard/bottombar.dart';
 import 'package:classified_app/views/dashboard/create_ad.dart';
+import 'package:classified_app/views/dashboard/seller_bottombar.dart';
 import 'package:classified_app/views/orders/orders.dart';
 import 'package:classified_app/views/profile/profile.dart';
 import 'package:classified_app/views/subscriptions/subscription.dart';
@@ -62,7 +66,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 )
               ],
             ),
-            drawer: const MyDrawerWidget(),
+            drawer: MyDrawerWidget(),
             body: Padding(
               padding: const EdgeInsets.all(12.0),
               child: SingleChildScrollView(
@@ -409,7 +413,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     backgroundColor: AppColors.blueTextColor,
                     foregroundColor: Colors.white,
                     onTap: () {
-                      Get.to(() => const AddServiceScreen(text: 'Service'));
+                      Get.to(() => const AddServiceScreen(text: 'Dog'));
                     },
                   ),
                   SpeedDialChild(
@@ -425,7 +429,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     backgroundColor: AppColors.blueTextColor,
                     foregroundColor: Colors.white,
                     onTap: () {
-                      Get.to(() => const AddServiceScreen(text: 'Dog'));
+                      Get.to(() => const AddServiceScreen(text: 'Service'));
                     },
                   ),
                 ],
@@ -439,7 +443,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
 }
 
 class MyDrawerWidget extends StatelessWidget {
-  const MyDrawerWidget({
+  final UniversalController controller = Get.find();
+
+  MyDrawerWidget({
     super.key,
   });
 
@@ -448,7 +454,7 @@ class MyDrawerWidget extends StatelessWidget {
     return Drawer(
       child: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: ListView(
+        child: Column(
           children: [
             Padding(
               padding: const EdgeInsets.all(8.0),
@@ -463,19 +469,12 @@ class MyDrawerWidget extends StatelessWidget {
             CustomDrawerTile(
               title: 'Home',
               imagePath: 'assets/images/home.png',
-              onTap: () => Get.to(() => const BottomBar()),
-            ),
-            const CustomDrawerTile(
-              title: 'Tasks',
-              imagePath: 'assets/images/tasks.png',
-            ),
-            // const CustomDrawerTile(
-            //   title: 'Messages',
-            //   imagePath: 'assets/images/message.png',
-            // ),
-            const CustomDrawerTile(
-              title: 'APIs',
-              imagePath: 'assets/images/apis.png',
+              // onTap: () => Get.to(() => const SellerBottomBar()),
+              onTap: () {
+                controller.isSeller.value
+                    ? Get.to(() => const SellerBottomBar())
+                    : Get.to(() => const BuyerBottomBar());
+              },
             ),
             CustomDrawerTile(
               title: 'Subscriptions',
@@ -485,13 +484,16 @@ class MyDrawerWidget extends StatelessWidget {
             CustomDrawerTile(
               title: 'Settings',
               imagePath: 'assets/images/settings.png',
-              onTap: () => Get.to(() => ProfileScreen()),
+              onTap: () {
+                controller.isSeller.value
+                    ? Get.to(() => ProfileScreen())
+                    : Get.to(() => BuyerProfileScreen());
+              },
             ),
             const CustomDrawerTile(
               title: 'Help & Support',
               imagePath: 'assets/images/help.png',
             ),
-            SizedBox(height: context.height * 0.08),
             Padding(
               padding: const EdgeInsets.all(12.0),
               child: Container(
@@ -520,6 +522,35 @@ class MyDrawerWidget extends StatelessWidget {
             ListTile(
               leading: Image.asset('assets/images/store_profile.png'),
               title: CustomTextWidget(
+                text:
+                    controller.isSeller.value ? 'Buyer Panel' : 'Seller Panel',
+                fontWeight: FontWeight.w600,
+                fontSize: 16.0,
+                textColor: AppColors.buttonPrimaryColor,
+              ),
+              subtitle: CustomTextWidget(
+                text:
+                    'Explore ${controller.isSeller.value ? 'Buyer Panel' : 'Seller Panel'}',
+                fontWeight: FontWeight.w600,
+                fontSize: 12.0,
+                maxLines: 2,
+                textColor: AppColors.lightTextColor,
+              ),
+              onTap: () {
+                controller.isSeller.value
+                    ? Get.offAll(() => const BuyerBottomBar())
+                    : Get.offAll(() => const SellerBottomBar());
+                controller.isSeller.value = !controller.isSeller.value;
+              },
+              trailing: const Icon(
+                Icons.arrow_circle_right_rounded,
+                // color: Colors.red,
+              ),
+            ),
+            const Divider(),
+            ListTile(
+              leading: Image.asset('assets/images/store_profile.png'),
+              title: CustomTextWidget(
                 text: 'Otis. Wu',
                 fontWeight: FontWeight.w600,
                 fontSize: 16.0,
@@ -531,7 +562,9 @@ class MyDrawerWidget extends StatelessWidget {
                 fontSize: 12.0,
                 textColor: AppColors.lightTextColor,
               ),
-              onTap: () {},
+              onTap: () {
+                Get.offAll(() => const LoginScreen());
+              },
               trailing: const Icon(
                 Icons.logout,
                 color: Colors.red,
@@ -559,11 +592,12 @@ class CustomDrawerTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
+      visualDensity: VisualDensity.compact,
       leading: Image.asset(imagePath),
       title: CustomTextWidget(
         text: title,
         fontWeight: FontWeight.w600,
-        fontSize: 16.0,
+        fontSize: 14.0,
         textColor: Colors.black87,
       ),
       onTap: onTap,

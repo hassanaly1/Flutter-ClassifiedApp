@@ -7,6 +7,7 @@ import 'package:classified_app/views/messages/message_detail.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class ActiveListingDetailScreen extends StatelessWidget {
   const ActiveListingDetailScreen({super.key});
@@ -177,7 +178,8 @@ class ActiveListingDetailScreen extends StatelessWidget {
                             textColor: Colors.black,
                           ),
                           InkWell(
-                              onTap: () => Get.to(() => const MessageDetailScreen(),
+                              onTap: () => Get.to(
+                                  () => const MessageDetailScreen(),
                                   transition: Transition.rightToLeft),
                               child:
                                   const CustomSecondaryButton(text: 'Message'))
@@ -281,7 +283,18 @@ class ActiveListingDetailScreen extends StatelessWidget {
                         ),
                         Container(
                           height: 120,
-                          color: Colors.blueAccent,
+                          decoration: BoxDecoration(
+                            border: Border.all(color: Colors.black12),
+                            borderRadius: BorderRadius.circular(12.0),
+                          ),
+                          child: const GoogleMap(
+                            initialCameraPosition: CameraPosition(
+                              target:
+                                  LatLng(37.42796133580664, -122.085749655962),
+                              zoom: 12,
+                            ),
+                            mapType: MapType.normal,
+                          ),
                         ),
                         const Divider(thickness: 2.0),
                         const CustomTextWidget(

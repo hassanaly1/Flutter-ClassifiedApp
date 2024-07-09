@@ -5,12 +5,24 @@ import 'package:classified_app/views/store/store.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class BottomBar extends StatelessWidget {
-  const BottomBar({super.key});
+class SellerBottomBar extends StatefulWidget {
+  const SellerBottomBar({super.key});
+
+  @override
+  State<SellerBottomBar> createState() => _SellerBottomBarState();
+}
+
+class _SellerBottomBarState extends State<SellerBottomBar> {
+  late SellerNavigationController navigationController;
+
+  @override
+  void initState() {
+    navigationController = Get.put(SellerNavigationController());
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
-    final navigationController = Get.put(NavigationController());
     return Scaffold(
       body: Obx(
         () => navigationController
@@ -76,7 +88,7 @@ class BottomBar extends StatelessWidget {
   }
 }
 
-class NavigationController extends GetxController {
+class SellerNavigationController extends GetxController {
   Rx<int> selectedIndex = 0.obs;
 
   final screens = const [

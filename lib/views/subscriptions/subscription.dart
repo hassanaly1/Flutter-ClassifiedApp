@@ -48,7 +48,7 @@ class SubscriptionScreen extends StatelessWidget {
               ),
             ],
           ),
-          drawer: const MyDrawerWidget(),
+          drawer: MyDrawerWidget(),
           body: NestedScrollView(
               headerSliverBuilder: (context, value) {
                 return [

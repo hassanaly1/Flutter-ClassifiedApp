@@ -2,7 +2,7 @@ import 'package:classified_app/helpers/appcolors.dart';
 import 'package:classified_app/helpers/custom_button.dart';
 import 'package:classified_app/views/auth/reset_password.dart';
 import 'package:classified_app/views/auth/signup.dart';
-import 'package:classified_app/views/dashboard/bottombar.dart';
+import 'package:classified_app/views/dashboard/seller_bottombar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -134,7 +134,7 @@ class LoginScreen extends StatelessWidget {
                           buttonText: 'Sign In',
                           onTap: () {
                             Get.offAll(
-                              () => const BottomBar(),
+                              () => const SellerBottomBar(),
                               transition: Transition.size,
                               duration: const Duration(seconds: 1),
                             );

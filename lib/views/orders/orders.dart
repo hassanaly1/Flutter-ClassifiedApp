@@ -46,7 +46,7 @@ class OrdersScreen extends StatelessWidget {
             ),
           ],
         ),
-        drawer: const MyDrawerWidget(),
+        drawer: MyDrawerWidget(),
         body: ListView.builder(
           shrinkWrap: true,
           itemCount: 10,

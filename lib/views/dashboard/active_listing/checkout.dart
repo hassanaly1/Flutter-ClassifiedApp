@@ -177,7 +177,7 @@ class CheckoutsScreen extends StatelessWidget {
                     child: InkWell(
                       onTap: () {
                         Get.to(
-                            () => const SuccessScreen(
+                            () => SuccessScreen(
                                   title: 'Order Confirmed!',
                                   subtitle:
                                       'Your Order has been confirmed, we will send you confirmation email shortly.',

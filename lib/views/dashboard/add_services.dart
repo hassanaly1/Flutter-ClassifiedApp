@@ -53,7 +53,7 @@ class AddServiceScreen extends StatelessWidget {
               ),
             ],
           ),
-          drawer: const MyDrawerWidget(),
+          drawer: MyDrawerWidget(),
           body: SingleChildScrollView(
             child: Padding(
               padding:
@@ -314,7 +314,7 @@ class AddServiceScreen extends StatelessWidget {
                     ),
                   ),
                   const HeadingAndTextfield(title: 'Other Details'),
-                  HeadingAndTextfield(title: 'Sey $text Location')
+                  HeadingAndTextfield(title: 'Set $text Location')
                 ],
               ),
             ),

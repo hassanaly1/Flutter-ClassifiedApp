@@ -114,7 +114,7 @@ class PaymentScreen extends StatelessWidget {
                   buttonText: 'Process',
                   onTap: () {
                     Get.to(
-                        () => const SuccessScreen(
+                        () => SuccessScreen(
                               title: 'Congratulations!',
                               subtitle:
                                   'Your Subscription has been purchased, we will send you confirmation email shortly.',
